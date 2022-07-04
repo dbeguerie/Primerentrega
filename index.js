@@ -1,12 +1,4 @@
 /*
-let palabraUno
-palabraUno = "Hola"
-
-let palabraDos = "Mundo"
-
-let palabraTres = palabraUno+palabraDos //HolaMundo
-
-console.log(palabraTres)
 
 // SOLICITAR DOS NUMEROS AL USUARIO, LOS VAMOS A SUMAR Y MOSTRAREMOS EL RESULRADOS //
 
@@ -52,7 +44,7 @@ while (promedio === "10"){
     entrada = prompt("ingrese otra calificación")
 
 }
-*/
+
 
 // PAGINA WEB VENTA DE PRODUCTOS ORGÁNICOS //
 
@@ -101,5 +93,84 @@ if(cantidadKilos>15){
     alert("Continue comprando en sección minorista")
 }
 
+// Precio sin IVA
+const iva = x = x * 0.21
+let precioProducto = 500
+let descuento = 50
+// Calculo el precioProducto + IVA - descuento
+let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento)
+console.log(nuevoPrecio)
 
+// Programá tu envío
 
+let nombre = "Dolores Beguerie";
+let direccion = "Ernesto de las Carreras 428";
+let telefono = "+541133713983"
+
+function Persona(nombre, direccion, telefono){
+    this.direccion = direccion
+    this.telefono = telefono
+    this.hablar = function () {console.log("HOLA" + this.nombre)}
+}
+const persona1 = new Persona ("Dolores Beguerie", "Ernesto de las Carreras 428", "+541133713983")
+persona1.hablar ();
+for (const propiedad in persona1) {
+    console.log(persona1[propiedad]);
+}
+*/
+// Productos
+class Producto {
+    constructor(nombre, precio, cantidad) {
+        this.nombre =  nombre
+        this.precio = precio;
+        this.cantidad = cantidad;
+        this.vendido = false;
+    }
+    aumentarPrecio(precioAumentar){
+        this.precio += precioAumentar;
+    }
+    vender(){
+        this.vendido = true;
+    }
+    disminuirPrecio = (precioDisminuir) => (this.precio -= precioDisminuir);
+    aplicarPromo = (promoCode) => {
+        if(promoCode === "DESCUENTO10%"){
+            this.precio -=(this.precio * 0.05)
+        }
+    }
+    reducirStock = (cantidad) => this.cantidad -= cantidad
+}
+
+const MANZANA = new Producto("Manzana Roja Premium", "300", "1")
+MANZANA.aplicarPromo("DESCUENTO10%")
+console.log("Precio Manzana: "+ MANZANA.precio)
+MANZANA.vender()
+console.log("Estatus vendido manzana: "+ MANZANA.vendido)
+
+const FRUTA = ["Banana", "Mandarina", "Uvas", "Arandanos", "Sandia", "Melon"];
+const FRUTAVERANO = FRUTA.splice (3, 4, 5);
+console.log("Frutas de Verano: "+ FRUTAVERANO)
+
+const PRODUCTOS = [{ id: 1, Producto: "Frutas"},
+                    { id:2, Producto: "Verdura"},
+                    { id:3, Producto: "Cereales"}];
+
+for (const Producto of PRODUCTOS) {
+    console.log(Producto.id);
+    console.log(Producto.Producto);
+}
+
+function agregarProductos(){
+let productoNuevo = new Producto("Pelon", "250", "1")
+PRODUCTOS.unshift(productoNuevo)
+PRODUCTOS.pop()
+console.log(PRODUCTOS)
+}
+function main(){
+    agregarProductos()
+}
+main()
+
+const RESULTADO = FRUTA.find((el) => el.nombre === "Banana")
+
+console.log(RESULTADO)
