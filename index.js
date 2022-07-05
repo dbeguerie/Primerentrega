@@ -170,11 +170,8 @@ function main(){
     agregarProductos()
 }
 main()
-
-const RESULTADO = FRUTA.find((el) => el.nombre === "Banana")
-
-console.log(RESULTADO)
-
+const existe = PRODUCTOS.some((producto) => producto.producto == "Harina")
+console.log("Existe?" + existe)
 
 const miCompra = [
     {nombre: "Manzana", precio:500},
@@ -183,3 +180,4 @@ const miCompra = [
 ]
 const total = miCompra.reduce ((acc,el) => acc + el.precio, 0)
 console.log(total)
+
