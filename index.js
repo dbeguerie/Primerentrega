@@ -174,3 +174,12 @@ main()
 const RESULTADO = FRUTA.find((el) => el.nombre === "Banana")
 
 console.log(RESULTADO)
+
+
+const miCompra = [
+    {nombre: "Manzana", precio:500},
+    {nombre: "Peras", precio:400},
+    {nombre: "Arandanos", precio:600}
+]
+const total = miCompra.reduce ((acc,el) => acc + el.precio, 0)
+console.log(total)
