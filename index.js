@@ -181,3 +181,8 @@ const miCompra = [
 const total = miCompra.reduce ((acc,el) => acc + el.precio, 0)
 console.log(total)
 
+const baratos = miCompra.filter ((producto) => producto.precio <500);
+console.log(baratos)
+ 
+let titulo = document.getElementById("tituloppal")
+console.dir(titulo)
