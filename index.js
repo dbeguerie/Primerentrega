@@ -1,188 +1,67 @@
-/*
+/**
+ * 
+ * PRODUCTOS ORGANICOS
+ * 
+ * Objetivo: E commerce para vender los productos
+ * 1 Especificar productos
+ * 2 Información de los productos
+ * 
+ */
 
-// SOLICITAR DOS NUMEROS AL USUARIO, LOS VAMOS A SUMAR Y MOSTRAREMOS EL RESULRADOS //
-
-let numeroUno = prompt ("Ingresa el primer número")
-let numeroDos = prompt ("Ingresa el segundo número")
-
-let suma = parseFloat(numeroUno) + parseFloat(numeroDos)
-
-alert("La suma es:"+ suma)
-
-
-let vidaPersonaje = 15
-
-if (vidaPersonaje == 0) {
-    alert("Muerto")
-} else {
-    alert("vivo")
-}
-
-let edad = prompt("ingresa tu edad")
-if(edad>18){
-    alert("Mayor de edad")
-} else{
-    alert("No eres mayor de edad")
-}
-
-
-
-let numeroCalificaciones = parseInt(prompt("Ingrese cantidad de calificaciones"))
-let sumatoria = 0
-let promedio = 0
-
-for(let i = 1; i<=numeroCalificaciones; i++) {
-let calificacion = parseFloat(prompt("ingrese la calificación" + i))
-sumatoria = sumatoria + calificacion
-}
-
-promedio = sumatoria / numeroCalificaciones
-alert ("el promedio es:"+ promedio)
-
-while (promedio === "10"){
-    alert ("Llegaste a tu máximo promedio")
-    entrada = prompt("ingrese otra calificación")
-
-}
-
-
-// PAGINA WEB VENTA DE PRODUCTOS ORGÁNICOS //
-
-function saludar () {
-    let nombre = prompt("ingresar nombre")
-    alert ("Hola" + " " + nombre)
-}
-
-// Seleccionar cantidad de Kilos
-function sumarKilos (primerNumero, segundoNumero, tercerNumero){
-    let sumatoria = primerNumero + segundoNumero + tercerNumero
-    console.log(sumatoria)
-    return sumatoria
-}
-let resultadoSuma = sumarKilos(3,5,7)
-alert(resultadoSuma)
-
-// Selección día de Entrega
-let seleccionUsuario = parseInt(
-    prompt("¿Que día desea recibir su compra?: \n 1.Lunes \n 2.Martes \n 3.Miércoles \n 4.Jueves")
-);
-
-switch(seleccionUsuario){
-case 1:
-    alert("Usted seleccionó Lunes");
-    break;
-case 2:
-    alert("Usted seleccionó Martes");
-    break;
-case 3:
-    alert("Usted seleccionó Miércoles");
-    break;
-case 4:
-    alert("Usted seleccionó Jueves");
-    break;
-default:
-    alert("Ese día no se realizan envíos")
-}
-
-// MINORISTA VS MAYORISTA
-
-let cantidadKilos = prompt("ingresa cantidad deseada")
-if(cantidadKilos>15){
-    alert("Dirigirse sección mayorista")
-} else{
-    alert("Continue comprando en sección minorista")
-}
-
-// Precio sin IVA
-const iva = x = x * 0.21
-let precioProducto = 500
-let descuento = 50
-// Calculo el precioProducto + IVA - descuento
-let nuevoPrecio = resta(suma(precioProducto, iva(precioProducto)), descuento)
-console.log(nuevoPrecio)
-
-// Programá tu envío
-
-let nombre = "Dolores Beguerie";
-let direccion = "Ernesto de las Carreras 428";
-let telefono = "+541133713983"
-
-function Persona(nombre, direccion, telefono){
-    this.direccion = direccion
-    this.telefono = telefono
-    this.hablar = function () {console.log("HOLA" + this.nombre)}
-}
-const persona1 = new Persona ("Dolores Beguerie", "Ernesto de las Carreras 428", "+541133713983")
-persona1.hablar ();
-for (const propiedad in persona1) {
-    console.log(persona1[propiedad]);
-}
-*/
-// Productos
 class Producto {
-    constructor(nombre, precio, cantidad) {
-        this.nombre =  nombre
-        this.precio = precio;
-        this.cantidad = cantidad;
-        this.vendido = false;
+    constructor(id, nombre, imagen, precio) {
+        this.id = id;
+        this.nombre = nombre;
+        this.precio = precioKilo;
+        this.imagen = imagen;
     }
-    aumentarPrecio(precioAumentar){
-        this.precio += precioAumentar;
-    }
-    vender(){
-        this.vendido = true;
-    }
-    disminuirPrecio = (precioDisminuir) => (this.precio -= precioDisminuir);
-    aplicarPromo = (promoCode) => {
-        if(promoCode === "DESCUENTO10%"){
-            this.precio -=(this.precio * 0.05)
-        }
-    }
-    reducirStock = (cantidad) => this.cantidad -= cantidad
 }
 
-const MANZANA = new Producto("Manzana Roja Premium", "300", "1")
-MANZANA.aplicarPromo("DESCUENTO10%")
-console.log("Precio Manzana: "+ MANZANA.precio)
-MANZANA.vender()
-console.log("Estatus vendido manzana: "+ MANZANA.vendido)
-
-const FRUTA = ["Banana", "Mandarina", "Uvas", "Arandanos", "Sandia", "Melon"];
-const FRUTAVERANO = FRUTA.splice (3, 4, 5);
-console.log("Frutas de Verano: "+ FRUTAVERANO)
-
-const PRODUCTOS = [{ id: 1, Producto: "Frutas"},
-                    { id:2, Producto: "Verdura"},
-                    { id:3, Producto: "Cereales"}];
-
-for (const Producto of PRODUCTOS) {
-    console.log(Producto.id);
-    console.log(Producto.Producto);
+class Carrito {
+    constructor ( id) {
+        this.id = id;
+        this.productos;
+    }
 }
 
-function agregarProductos(){
-let productoNuevo = new Producto("Pelon", "250", "1")
-PRODUCTOS.unshift(productoNuevo)
-PRODUCTOS.pop()
-console.log(PRODUCTOS)
+function renderCard(producto){
+    let cardRendered = 
+    <div class="card m-3" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary" id= ${producto.id}>Go somewhere</a>
+    </div>
+    </div>;
+return cardRendered
 }
-function main(){
-    agregarProductos()
-}
-main()
-const existe = PRODUCTOS.some((producto) => producto.producto == "Harina")
-console.log("Existe?" + existe)
 
-const miCompra = [
-    {nombre: "Manzana", precio:500},
-    {nombre: "Peras", precio:400},
-    {nombre: "Arandanos", precio:600}
-]
-const total = miCompra.reduce ((acc,el) => acc + el.precio, 0)
-console.log(total)
+let catalogoProductos = {};
 
-const baratos = miCompra.filter ((producto) => producto.precio <500);
-console.log(baratos)
- 
-let titulo = document.getElementById("tituloppal")
-console.dir(titulo)
+let producto1 = new Producto(1, "Banana", "imagen.jpg", 100);
+let producto2 = new Producto(2,"Pera", "pera.jpg", 150);
+let producto3 = new Producto(3,"Durazno", "durazno.jpg", 200);
+
+catalogoProductos.push(producto1);
+catalogoProductos.push(producto2);
+catalogoProductos.push(producto3);
+
+let cardsDiv = document.querySelector("#cards");
+
+catalogoProductos.forEach(producto => {
+    cardsDiv.innerHTML += renderCard(producto);
+});
+
+
+let cardRendered = 
+    <div class="card m-3" style="width: 18rem;">
+    <img src="..." class="card-img-top" alt="...">
+    <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+    </div>;
+
+let carrito1 = new Carrito (1);
